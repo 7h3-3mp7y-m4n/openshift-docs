@@ -11,6 +11,7 @@ ifdef::openshift-origin[]
 :restricted:
 endif::[]
 
+:_content-type: CONCEPT
 [id="installation-vsphere-config-yaml_{context}"]
 = Sample `install-config.yaml` file for VMware vSphere
 
@@ -42,8 +43,6 @@ networking:
 ---
 platform:
   vsphere:
-    apiVIPs:
-    - 10.0.0.1
     failureDomains: <7>
     - name: <failure_domain_name>
       region: <default_region_name>
@@ -57,8 +56,6 @@ platform:
         resourcePool: "/<datacenter>/host/<cluster>/Resources/<resourcePool>" <10>
         folder: "/<datacenter_name>/vm/<folder_name>/<subfolder_name>" <11>
       zone: <default_zone_name>
-    ingressVIPs:
-    - 10.0.0.2
     vcenters:
     - datacenters:
       - <datacenter>
@@ -165,13 +162,18 @@ If you must specify VMs across multiple datastores, use a `datastore` object to 
 <11> Optional: For installer-provisioned infrastructure, the absolute path of an existing folder where the installation program creates the virtual machines, for example, `/<datacenter_name>/vm/<folder_name>/<subfolder_name>`. If you do not provide this value, the installation program creates a top-level folder in the datacenter virtual machine folder that is named with the infrastructure ID. If you are providing the infrastructure for the cluster and you do not want to use the default `StorageClass` object, named `thin`, you can omit the `folder` parameter from the `install-config.yaml` file.
 <12> The password associated with the vSphere user.
 <13> The fully-qualified hostname or IP address of the vCenter server.
++
+[IMPORTANT]
+====
+The Cluster Cloud Controller Manager Operator performs a connectivity check on a provided hostname or IP address. Ensure that you specify a hostname or an IP address to a reachable vCenter server. If you provide metadata to a non-existent vCenter server, installation of the cluster fails at the bootstrap stage.
+====
 <14> The vSphere disk provisioning method.
 ifndef::openshift-origin[]
 <15> Whether to enable or disable FIPS mode. By default, FIPS mode is not enabled. If FIPS mode is enabled, the {op-system-first} machines that {product-title} runs on bypass the default Kubernetes cryptography suite and use the cryptography modules that are provided with {op-system} instead.
 +
 [IMPORTANT]
 ====
-The use of FIPS Validated / Modules in Process cryptographic libraries is only supported on {product-title} deployments on the `x86_64` architecture.
+To enable FIPS mode for your cluster, you must run the installation program from a {op-system-base-full} computer configured to operate in FIPS mode. For more information about configuring FIPS mode on RHEL, see link:https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/security_hardening/assembly_installing-the-system-in-fips-mode_security-hardening[Installing the system in FIPS mode]. The use of FIPS validated or Modules In Process cryptographic libraries is only supported on {product-title} deployments on the `x86_64`, `ppc64le`, and `s390x` architectures.
 ====
 endif::openshift-origin[]
 ifndef::restricted[]

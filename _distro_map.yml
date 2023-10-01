@@ -322,6 +322,9 @@ openshift-gitops:
     gitops-docs-1.9:
       name: '1.9'
       dir: gitops/1.9
+    gitops-docs-1.10:
+      name: '1.10'
+      dir: gitops/1.10
 openshift-pipelines:
   name: Red Hat OpenShift Pipelines
   author: OpenShift documentation team <openshift-docs@redhat.com>
@@ -335,8 +338,11 @@ openshift-pipelines:
     pipelines-docs-1.11:
       name: '1.11'
       dir: pipelines/1.11
+    pipelines-docs-1.12:
+      name: '1.12'
+      dir: pipelines/1.12
 openshift-builds:
-  name: Red Hat OpenShift Builds
+  name: Builds for Red Hat OpenShift
   author: OpenShift documentation team <openshift-docs@redhat.com>
   site: commercial
   site_name: Documentation

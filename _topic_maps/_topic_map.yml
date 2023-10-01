@@ -179,7 +179,7 @@ Topics:
     File: installing-aws-china
   - Name: Installing a cluster on AWS using CloudFormation templates
     File: installing-aws-user-infra
-  - Name: Installing a cluster using AWS Local Zones
+  - Name: Installing a cluster on AWS with worker nodes on AWS Local Zones
     File: installing-aws-localzone
   - Name: Installing a cluster on AWS in a restricted network with user-provisioned infrastructure
     File: installing-restricted-networks-aws
@@ -187,8 +187,6 @@ Topics:
     File: installing-aws-outposts-remote-workers
   - Name: Installing a three-node cluster on AWS
     File: installing-aws-three-node
-  - Name: Expanding a cluster with on-premise bare metal nodes
-    File: installing-aws-expanding-a-cluster-with-on-premise-bare-metal-nodes
   - Name: Uninstalling a cluster on AWS
     File: uninstalling-cluster-aws
 - Name: Installing on Azure
@@ -221,6 +219,8 @@ Topics:
     File: installing-azure-three-node
   - Name: Uninstalling a cluster on Azure
     File: uninstalling-cluster-azure
+  - Name: Installation configuration parameters for Azure
+    File: installation-config-parameters-azure
 - Name: Installing on Azure Stack Hub
   Dir: installing_azure_stack_hub
   Distros: openshift-origin,openshift-enterprise
@@ -510,6 +510,9 @@ Topics:
 - Name: Troubleshooting installation issues
   File: installing-troubleshooting
   Distros: openshift-origin,openshift-enterprise
+- Name: Support for FIPS cryptography
+  File: installing-fips
+  Distros: openshift-enterprise,openshift-online
 ---
 Name: Post-installation configuration
 Dir: post_installation_configuration
@@ -1362,7 +1365,7 @@ Topics:
     File: about-openshift-sdn
   - Name: Migrating to the OpenShift SDN network plugin
     File: migrate-to-openshift-sdn
-  - Name: Rolling back to the OpenShift SDN network plugin
+  - Name: Rolling back to the OVN-Kubernetes network plugin
     File: rollback-to-ovn-kubernetes
   - Name: Configuring egress IPs for a project
     File: assigning-egress-ips
@@ -1902,92 +1905,14 @@ Topics:
   Dir: pipelines
   Distros: openshift-enterprise
   Topics:
-  - Name: OpenShift Pipelines release notes
-    File: op-release-notes
-  - Name: Understanding OpenShift Pipelines
-    File: understanding-openshift-pipelines
-  - Name: Installing OpenShift Pipelines
-    File: installing-pipelines
-  - Name: Uninstalling OpenShift Pipelines
-    File: uninstalling-pipelines
-  - Name: Creating CI/CD solutions for applications using OpenShift Pipelines
-    File: creating-applications-with-cicd-pipelines
-  - Name: Managing non-versioned and versioned cluster tasks
-    File: managing-nonversioned-and-versioned-cluster-tasks
-  - Name: Using Tekton Hub with OpenShift Pipelines
-    File: using-tekton-hub-with-openshift-pipelines
-  - Name: Specifying remote pipelines and tasks using resolvers
-    File: remote-pipelines-tasks-resolvers
-  - Name: Using Pipelines as Code
-    File: using-pipelines-as-code
-  - Name: Working with OpenShift Pipelines in the web console
-    File: working-with-pipelines-web-console
-  - Name: Customizing configurations in the TektonConfig custom resource
-    File: customizing-configurations-in-the-tektonconfig-cr
-  - Name: Reducing resource consumption of OpenShift Pipelines
-    File: reducing-pipelines-resource-consumption
-  - Name: Setting compute resource quota for OpenShift Pipelines
-    File: setting-compute-resource-quota-for-openshift-pipelines
-  - Name: Using pods in a privileged security context
-    File: using-pods-in-a-privileged-security-context
-  - Name: Securing webhooks with event listeners
-    File: securing-webhooks-with-event-listeners
-  - Name: Authenticating pipelines using git secret
-    File: authenticating-pipelines-using-git-secret
-  - Name: Using Tekton Chains for OpenShift Pipelines supply chain security
-    File: using-tekton-chains-for-openshift-pipelines-supply-chain-security
-  - Name: Viewing pipeline logs using the OpenShift Logging Operator
-    File: viewing-pipeline-logs-using-the-openshift-logging-operator
-  - Name: Unprivileged building of container images using Buildah
-    File: unprivileged-building-of-container-images-using-buildah
+  - Name: About OpenShift Pipelines
+    File: about-pipelines
 - Name: GitOps
   Dir: gitops
   Distros: openshift-enterprise
   Topics:
-  - Name: OpenShift GitOps release notes
-    File: gitops-release-notes
-  - Name: Understanding OpenShift GitOps
-    File: understanding-openshift-gitops
-  - Name: Installing OpenShift GitOps
-    File: installing-openshift-gitops
-  - Name: Uninstalling OpenShift GitOps
-    File: uninstalling-openshift-gitops
-  - Name: Setting up a new Argo CD instance
-    File: setting-up-argocd-instance
-  - Name: Monitoring Argo CD instances
-    File: monitoring-argo-cd-instances
-  - Name: Using Argo Rollouts for progressive deployment delivery
-    File: using-argo-rollouts-for-progressive-deployment-delivery
-  - Name: Configuring an OpenShift cluster by deploying an application with cluster configurations
-    File: configuring-an-openshift-cluster-by-deploying-an-application-with-cluster-configurations
-  - Name: Deploying a Spring Boot application with Argo CD
-    File: deploying-a-spring-boot-application-with-argo-cd
-  - Name: Argo CD custom resource properties
-    File: argo-cd-custom-resource-properties
-  - Name: Configuring secure communication with Redis
-    File: configuring-secure-communication-with-redis
-  - Name: Monitoring application health status
-    File: health-information-for-resources-deployment
-  - Name: Configuring SSO for Argo CD using Dex
-    File: configuring-sso-on-argo-cd-using-dex
-  - Name: Configuring SSO for Argo CD using Keycloak
-    File: configuring-sso-for-argo-cd-using-keycloak
-  - Name: Configuring Argo CD RBAC
-    File: configuring-argo-cd-rbac
-  - Name: Configuring Resource Quota
-    File: configuring-resource-quota
-  - Name: Monitoring Argo CD custom resource workloads
-    File: monitoring-argo-cd-custom-resource-workloads
-  - Name: Viewing Argo CD logs
-    File: viewing-argo-cd-logs
-  - Name: Running Control Plane Workloads on Infra nodes
-    File: run-gitops-control-plane-workload-on-infra-nodes
-  - Name: Sizing requirements for GitOps Operator
-    File: about-sizing-requirements-gitops
-  - Name: Collecting debugging data for a support case
-    File: collecting-debugging-data-for-support
-  - Name: Troubleshooting issues in GitOps
-    File: troubleshooting-issues-in-GitOps
+  - Name: About OpenShift GitOps
+    File: about-redhat-openshift-gitops
 - Name: Jenkins
   Dir: jenkins
   Distros: openshift-enterprise
@@ -2261,8 +2186,8 @@ Topics:
   File: hcp-managing
 - Name: Backup, restore, and disaster recovery for hosted control planes
   File: hcp-backup-restore-dr
-- Name: Troubleshooting worker node issues
-  File: hcp-debugging-nodes
+- Name: Troubleshooting hosted control planes
+  File: hcp-troubleshooting
 ---
 Name: Nodes
 Dir: nodes
@@ -2792,9 +2717,11 @@ Topics:
   File: graceful-cluster-shutdown
 - Name: Restarting a cluster gracefully
   File: graceful-cluster-restart
-- Name: Application backup and restore
+- Name: OADP Application backup and restore
   Dir: application_backup_and_restore
   Topics:
+  - Name: Introduction to OpenShift API for Data Protection
+    File: oadp-intro
   - Name: OADP release notes
     File: oadp-release-notes
   - Name: OADP features and plugins
@@ -2816,13 +2743,39 @@ Topics:
       File: installing-oadp-ocs
     - Name: Uninstalling OADP
       File: uninstalling-oadp
-  - Name: Backing up and restoring
+  - Name: OADP backing up
     Dir: backing_up_and_restoring
     Topics:
     - Name: Backing up applications
       File: backing-up-applications
+    - Name: Creating a Backup CR
+      File: oadp-creating-backup-cr
+    - Name: Backing up persistent volumes with CSI snapshots
+      File: oadp-backing-up-pvs-csi-doc
+    - Name: Backing up applications with Restic
+      File: oadp-backing-up-applications-restic-doc
+    - Name: Creating backup hooks
+      File: oadp-creating-backup-hooks-doc
+    - Name: Scheduling backups using Schedule CR
+      File: oadp-scheduling-backups-doc
+    - Name: Deleting backups
+      File: oadp-deleting-backups-doc
+  - Name: OADP restoring
+    Dir: backing_up_and_restoring
+    Topics:
     - Name: Restoring applications
       File: restoring-applications
+  - Name: OADP Data Mover
+    Dir: installing
+    Topics:
+    - Name: Introduction to OADP Data Mover
+      File: data-mover-intro
+    - Name: Using Data Mover for CSI snapshots
+      File: oadp-using-data-mover-for-csi-snapshots-doc
+    - Name: Using OADP 1.2 Data Mover with Ceph storage
+      File: oadp-12-data-mover-ceph-doc
+    - Name: Cleaning up after a backup using OADP 1.1 Data Mover
+      File: oadp-cleaning-up-after-data-mover-1-1-backup-doc
   - Name: Troubleshooting
     File: troubleshooting
   - Name: OADP API
@@ -3647,6 +3600,8 @@ Topics:
       File: distr-tracing-otel-configuring
     - Name: Use
       File: distr-tracing-otel-using
+    - Name: Troubleshooting
+      File: distr-tracing-otel-troubleshooting
     - Name: Migration
       File: distr-tracing-otel-migrating
     - Name: Removal
@@ -3733,9 +3688,23 @@ Topics:
 - Name: Virtual machines
   Dir: virtual_machines
   Topics:
-###VIRTUAL MACHINE CHESS SALAD (silly name to highlight that the commented out assemblies need to be checked against merged filenams)
-  - Name: Creating virtual machines
-    File: virt-creating-vms
+  - Name: Creating VMs
+    Dir: creating_vms
+    Topics:
+    - Name: Creating VMs from Red Hat images
+      File: virt-creating-vms-from-rh-images
+    - Name: Creating VMs from custom images
+      File: virt-creating-vms-from-custom-images
+    - Name: Creating VMs by using container disks
+      File: virt-creating-vms-from-container-disks
+    - Name: Creating VMs by importing images from web pages
+      File: virt-creating-vms-from-web-images
+    - Name: Creating VMs by uploading images
+      File: virt-creating-vms-uploading-images
+    - Name: Creating VMs by cloning PVCs
+      File: virt-creating-vms-by-cloning-pvcs
+    - Name: Installing the QEMU guest agent and VirtIO drivers
+      File: virt-installing-qemu-guest-agent
   - Name: Connecting to VM consoles
     File: virt-accessing-vm-consoles
   - Name: Configuring SSH access to VMs
@@ -3752,20 +3721,10 @@ Topics:
     File: virt-manage-vmis
   - Name: Controlling virtual machine states
     File: virt-controlling-vm-states
-  - Name: Automating Windows installation with sysprep
-    File: virt-automating-windows-sysprep
-  - Name: Installing the QEMU guest agent and VirtIO drivers
-    File: virt-installing-qemu-guest-agent
-  - Name: Viewing the QEMU guest agent information for virtual machines
-    File: virt-viewing-qemu-guest-agent-web
   - Name: Using virtual Trusted Platform Module devices
     File: virt-using-vtpm-devices
   - Name: Managing virtual machines with OpenShift Pipelines
     File: virt-managing-vms-openshift-pipelines
-  - Name: Managing automatic boot source updates
-    File: virt-automatic-bootsource-updates
-  - Name: Creating custom boot sources
-    File: virt-creating-and-using-boot-sources
   - Name: Advanced virtual machine management
     Dir: advanced_vm_management
     Topics:
@@ -3800,64 +3759,13 @@ Topics:
       File: virt-high-availability-for-vms
     - Name: Control plane tuning
       File: virt-vm-control-plane-tuning
-# Importing virtual machines
-  - Name: Importing virtual machines
-    Dir: importing_vms
-    Topics:
-    - Name: TLS certificates for data volume imports
-      File: virt-tls-certificates-for-dv-imports
-    - Name: Importing virtual machine images with data volumes
-      File: virt-importing-virtual-machine-images-datavolumes
-# Cloning virtual machines
-  - Name: Cloning virtual machines
-    Dir: cloning_vms
-    Topics:
-    - Name: Enabling user permissions to clone data volumes across namespaces
-      File: virt-enabling-user-permissions-to-clone-datavolumes
-    - Name: Cloning a virtual machine disk into a new data volume
-      File: virt-cloning-vm-disk-into-new-datavolume
-    - Name: Cloning a virtual machine by using a data volume template
-      File: virt-cloning-vm-using-datavolumetemplate
-    - Name: Cloning a virtual machine disk into a new block storage persistent volume claim
-      File: virt-cloning-vm-disk-to-new-block-storage-pvc
-#A BETTER NAME THAN 'STORAGE 4 U'
-  - Name: Virtual machine disks
+  - Name: VM disks
     Dir: virtual_disks
     Topics:
-    - Name: Configuring local storage for virtual machines
-      File: virt-configuring-local-storage-for-vms
-    - Name: Creating data volumes
-      File: virt-creating-data-volumes
-    - Name: Reserving PVC space for file system overhead
-      File: virt-reserving-pvc-space-fs-overhead
-    - Name: Configuring CDI to work with namespaces that have a compute resource quota
-      File: virt-configuring-cdi-for-namespace-resourcequota
-    - Name: Managing data volume annotations
-      File: virt-managing-data-volume-annotations
-    - Name: Using preallocation for data volumes
-      File: virt-using-preallocation-for-datavolumes
-    - Name: Uploading local disk images by using the web console
-      File: virt-uploading-local-disk-images-web
-    - Name: Uploading local disk images by using the virtctl tool
-      File: virt-uploading-local-disk-images-virtctl
-    - Name: Uploading a local disk image to a block storage persistent volume claim
-      File: virt-uploading-local-disk-images-block
-    - Name: Managing virtual machine snapshots
-      File: virt-managing-vm-snapshots
-    - Name: Expanding virtual storage by adding blank disk images
-      File: virt-expanding-virtual-storage-with-blank-disk-images
-    - Name: Cloning a data volume using smart-cloning
-      File: virt-cloning-a-datavolume-using-smart-cloning
-    - Name: Hot plugging virtual disks
+    - Name: Hot-plugging VM disks
       File: virt-hot-plugging-virtual-disks
-    - Name: Using container disks with virtual machines
-      File: virt-using-container-disks-with-vms
-    - Name: Preparing CDI scratch space
-      File: virt-preparing-cdi-scratch-space
-    - Name: Re-using statically provisioned persistent volumes
-      File: virt-reusing-statically-provisioned-persistent-volumes
-    - Name: Expanding a virtual machine disk
-      File: virt-expanding-vm-disk
+    - Name: Expanding VM disks
+      File: virt-expanding-vm-disks
 - Name: Networking
   Dir: vm_networking
   Topics:
@@ -3883,33 +3791,50 @@ Topics:
     File: virt-accessing-vm-secondary-network-fqdn
   - Name: Managing MAC address pools for network interfaces
     File: virt-using-mac-address-pool-for-vms
+- Name: Storage
+  Dir: storage
+  Topics:
+  - Name: Storage configuration overview
+    File: virt-storage-config-overview
+  - Name: Configuring storage profiles
+    File: virt-configuring-storage-profile
+  - Name: Managing automatic boot source updates
+    File: virt-automatic-bootsource-updates
+  - Name: Reserving PVC space for file system overhead
+    File: virt-reserving-pvc-space-fs-overhead
+  - Name: Configuring local storage by using HPP
+    File: virt-configuring-local-storage-with-hpp
+  - Name: Enabling user permissions to clone data volumes across namespaces
+    File: virt-enabling-user-permissions-to-clone-datavolumes
+  - Name: Configuring CDI to override CPU and memory quotas
+    File: virt-configuring-cdi-for-namespace-resourcequota
+  - Name: Preparing CDI scratch space
+    File: virt-preparing-cdi-scratch-space
+  - Name: Using preallocation for data volumes
+    File: virt-using-preallocation-for-datavolumes
+  - Name: Managing data volume annotations
+    File: virt-managing-data-volume-annotations
 # Virtual machine live migration
 - Name: Live migration
   Dir: live_migration
   Topics:
-  - Name: Virtual machine live migration
-    File: virt-live-migration
-  - Name: Live migration limits and timeouts
-    File: virt-live-migration-limits
-  - Name: Migrating a virtual machine instance to another node
-    File: virt-migrate-vmi
-  - Name: Cancelling the live migration of a virtual machine instance
-    File: virt-cancel-vmi-migration
-  - Name: Configuring virtual machine eviction strategy
-    File: virt-configuring-vmi-eviction-strategy
-  - Name: Configuring live migration policies
-    File: virt-configuring-live-migration-policies
+  - Name: About live migration
+    File: virt-about-live-migration
+  - Name: Configuring live migration
+    File: virt-configuring-live-migration
+  - Name: Initiating and canceling live migration
+    File: virt-initiating-live-migration
 # Node maintenance mode
 - Name: Nodes
   Dir: nodes
   Topics:
-  - Name: About node maintenance
-    File: virt-about-node-maintenance
+  - Name: Node maintenance
+    File: virt-node-maintenance
   - Name: Managing node labeling for obsolete CPU models
     File: virt-managing-node-labeling-obsolete-cpu-models
   - Name: Preventing node reconciliation
     File: virt-preventing-node-reconciliation
-  - Name: Deleting a failed node to trigger virtual machine failover
+  - Name: Deleting a failed node to trigger VM failover
     File: virt-triggering-vm-failover-resolving-failed-node
 - Name: Monitoring
   Dir: monitoring
@@ -3939,6 +3864,8 @@ Topics:
 - Name: Backup and restore
   Dir: backup_restore
   Topics:
+  - Name: Backup and restore by using VM snapshots
+    File: virt-backup-restore-snapshots
   - Name: Installing and configuring OADP
     File: virt-installing-configuring-oadp
   - Name: Backing up and restoring virtual machines

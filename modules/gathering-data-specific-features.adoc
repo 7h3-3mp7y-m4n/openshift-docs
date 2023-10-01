@@ -25,7 +25,7 @@ ifndef::openshift-origin[]
 |===
 |Image |Purpose
 
-|`registry.redhat.io/container-native-virtualization/cnv-must-gather-rhel9:v<installed_version_virt>`
+|`registry.redhat.io/container-native-virtualization/cnv-must-gather-rhel9:v{HCOVersion}`
 |Data collection for {VirtProductName}.
 
 |`registry.redhat.io/openshift-serverless-1/svls-must-gather-rhel8`
@@ -65,6 +65,9 @@ endif::openshift-dedicated[]
 
 |`registry.redhat.io/numaresources/numaresources-must-gather-rhel9:v<installed-version-nro>`
 |Data collection for the NUMA Resources Operator (NRO).
+
+|`registry.redhat.io/openshift4/ptp-must-gather-rhel8:v<installed-version-ptp>`
+|Data collection for the PTP Operator.
 
 |`registry.redhat.io/workload-availability/node-maintenance-must-gather-rhel8:v<installed-version-NMO>`
 |Data collection for the Node Maintenance Operator (NMO).

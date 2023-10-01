@@ -60,6 +60,11 @@ Topics:
   File: osd-support
   Distros: openshift-dedicated
 ---
+#Name: Tutorials
+#Dir: cloud_experts_tutorials
+#Distros: openshift-dedicated
+#Topics:
+#---
 Name: Red Hat OpenShift Cluster Manager
 Dir: ocm
 Distros: openshift-dedicated
@@ -188,6 +193,8 @@ Topics:
       File: aws-private-connections
     - Name: Configuring a private cluster
       File: private-cluster
+- Name: Cluster autoscaling
+  File: osd-cluster-autoscaling
 - Name: Nodes
   Dir: osd_nodes
   Distros: openshift-dedicated
@@ -204,8 +211,6 @@ Topics:
   Topics:
   - Name: Accessing the service logs
     File: osd-accessing-the-service-logs
-# - Name: Cluster autoscaling
-#   File: osd-cluster-autoscaling
 ---
  Name: Security and compliance
  Dir: security
@@ -301,8 +306,8 @@ Topics:
   File: configuring-registry-operator
 - Name: Accessing the registry
   File: accessing-the-registry
-- Name: Exposing the registry
-  File: securing-exposing-registry
+# - Name: Exposing the registry
+#   File: securing-exposing-registry
 ---
 Name: Networking
 Dir: networking
